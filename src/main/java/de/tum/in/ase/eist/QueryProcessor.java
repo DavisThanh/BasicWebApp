@@ -19,11 +19,25 @@ public class QueryProcessor {
             return String.valueOf(result);
         } else if(query.contains("which of the following numbers is the largest:"))
         {
+            String[] s = query.split(":");
+            String[] result = s[3].split(",");
+            String tmp = null;
+            for(int i = 0;i < result.length; i++)
+            {
+                if(tmp == null)
+                {
+                    tmp = result[i];
+                }
 
+                if(tmp.compareTo(result[i]) < 0)
+                {
+                    tmp = result[i];
+                }
+            }
+            return tmp;
         }
         else {
             return "";
         }
-        return "";
     }
 }
