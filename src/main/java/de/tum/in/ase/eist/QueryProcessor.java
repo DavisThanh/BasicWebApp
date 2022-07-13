@@ -20,24 +20,31 @@ public class QueryProcessor {
         } else if(query.contains("which of the following numbers is the largest:"))
         {
             String[] s = query.split(":");
-            String[] result = s[3].split(",");
+            String[] result = s[3].trim().split(",");
             String tmp = null;
-            for(int i = 0;i < result.length; i++)
-            {
-                if(tmp == null)
-                {
-                    tmp = result[i];
+            for (String value : result) {
+                if (tmp == null) {
+                    tmp = value.trim();
                 }
 
-                if(tmp.compareTo(result[i]) < 0)
-                {
-                    tmp = result[i];
+                if (tmp.compareTo(value) < 0) {
+                    tmp = value.trim();
                 }
             }
             return tmp;
         }
+        else if(query.contains("multiplied ")) {
+            String[] s = query.split(" ");
+            int result = Integer.parseInt(s[3]) * Integer.parseInt(s[5]);
+            return String.valueOf(result);
+        }
+        else if(query.contains("which of the following numbers is both a square and a cube"))
+        {
+
+        }
         else {
             return "";
         }
+        return "";
     }
 }
