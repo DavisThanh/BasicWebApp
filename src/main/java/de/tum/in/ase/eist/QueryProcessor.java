@@ -42,6 +42,12 @@ public class QueryProcessor {
         {
 
         }
+        else if(query.contains("what colour is a banana")){
+        return "yellow";
+        }
+        else if(query.contains("which city is the Eiffel tower in")){
+            return "paris";
+        }
         else {
             return "";
         }
